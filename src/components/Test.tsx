@@ -1,5 +1,9 @@
-export default function Test() {
-    return (
-        <div className="text-fuchsia-500 text-2xl  ">Test</div>
-    )
+import React from 'react'
+
+const Test = () => {
+  return (
+    <div className='text-green-500'>Test</div>
+  )
 }
+
+export default Test
