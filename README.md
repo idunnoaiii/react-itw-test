@@ -36,3 +36,4 @@ export default {
 - config eslint and prettier
 - add storybook
 - add testing jet
+- add react-query

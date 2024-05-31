@@ -1,5 +1,5 @@
 ## Todo
-- [] create app
+- [x] create app
 - [] folder structure
 - [] ui
     - tailwindcss
