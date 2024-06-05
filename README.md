@@ -37,3 +37,16 @@ export default {
 - add storybook
 - add testing jet
 - add react-query
+
+## Code structure
+  - setup struct feature-based
+   - benefit
+    - clear separation of concerns
+    - feature are self-contained, allowing for easy testing and maintenance
+    - scalable: new features can be added without affecting the existing code
+  - drawback
+    - code duplication: features often have similar code or logic. Careful planning and refactoring are required to avoid code duplication.
+
+
+- setup api client
+ - use axios + react-query
