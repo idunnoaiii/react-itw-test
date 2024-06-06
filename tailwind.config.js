@@ -1,6 +1,5 @@
-/* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
-export default  {
+export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -8,12 +7,12 @@ export default  {
   theme: {
     extend: {
       colors: {
-        primary: '#423F71',
+        primary: '#3848a2',
         secondary: '#181818',
 
-        header: '#292841',
-        background: '#242424',
-        body: '#1C1B29'
+        header: '#121836',
+        background: '#121836',
+        body: '#121836'
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
@@ -41,7 +40,7 @@ export default  {
     },
   },
   plugins: [
-     require('@tailwindcss/line-clamp'),
-      require('tailwind-scrollbar')
+    // require('tailwind-scrollbar'),
+    // require('tailwindcss/line-clamp')
   ],
 }

@@ -1,7 +1,7 @@
-import { joinClassName } from '@/utils'
 import Container from '../container'
 import { Link, useSearchParams } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
+import { twJoin } from 'tailwind-merge'
 
 const MENU_CLASS = `
   py-1
@@ -23,10 +23,10 @@ const Header = () => {
 
   const getMenuClass = (path: string) => {
     if (path === pathname) {
-      return joinClassName(MENU_CLASS, MENU_CLASS_ACTIVE)
+      return twJoin(MENU_CLASS, MENU_CLASS_ACTIVE)
     }
 
-    return joinClassName(MENU_CLASS, '')
+    return twJoin(MENU_CLASS, '')
   }
 
   const onWindowClick = () => {}

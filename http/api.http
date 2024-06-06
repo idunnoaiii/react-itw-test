@@ -1,1 +1,6 @@
-https://api.themoviedb.org/3/discover/tv?language=en-US&sort_by=popularity.desc&page=1&timezone=America/New_York&include_null_first_air_dates=false&api_key=92b418e837b833be308bbfb1fb2aca1e
+### Get Popular Movies
+https://api.themoviedb.org/3/discover/movie?language=en-US&sort_by=popularity.desc&page=1&timezone=America/New_York&include_null_first_air_dates=false&api_key=92b418e837b833be308bbfb1fb2aca1e
+
+
+### Get Genres
+https://api.themoviedb.org/3/genre/tv/list?api_key=92b418e837b833be308bbfb1fb2aca1e

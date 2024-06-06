@@ -1,60 +1,52 @@
-import { fetchMovies } from '@/api/movie.api'
 import DefaultLayout from '@/components/layout/default-layout'
 import Section from '@/components/section'
 import { Slider } from '@/components/slider/slider'
-import { Movie } from '@/types/movie'
-import { useQuery } from '@tanstack/react-query'
-import React, { useEffect, useState } from 'react'
 import Trending from './components/trending'
 import { Card } from '@/components/card'
 import { useNavigate } from 'react-router-dom'
-import MovieSlider from './components/movie-slider'
+import MovieSlider from '@/pages/home/components/movie-slider'
+import { useGetInTheaters, useGetPopulars, useGetTrendings } from '@/pages/home/hooks'
+import { Movie } from '@/types/movie'
+import { useState } from 'react'
+import { getFulImageSrc } from '@/utils'
+import { getTrailers } from '@/api/movie.api'
+import { TrailerModal } from '@/components/trailer-modal'
+import { YOUTUBE_TRAILER } from '@/constants'
 
 export default function HomePage() {
-  // const [page, setPage] = useState(1)
-
-  // const result = useQuery({
-  //   queryKey: ['movies', page],
-  //   queryFn: () => fetchMovies(page)
-  // })
-  //
-
   const navigate = useNavigate()
 
-  const [trending, setTrending] = useState<Movie[]>([])
-  const [inTheaters, setInTheaters] = useState<Movie[]>([])
+  const { data: trendings } = useGetTrendings()
+  const { data: inTheaters } = useGetInTheaters()
+  const { data: populars } = useGetPopulars()
 
-  const fetchDummy = async () => {
-    const arrs: Movie[] = []
+  const [trailerSrc, setTrailerSrc] = useState('')
 
-    for (let i = 0; i < 10; i++) {
-      const res = await fetch(
-        `https://api.themoviedb.org/3/trending/movie/day?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&page=${1}`
-      )
-      const data = await res.json()
-      arrs.push(...data.results)
-    }
-
-    setTrending(arrs)
-    setInTheaters(arrs)
+  const playTrailer = async (film: Movie) => {
+    const trailers = await getTrailers(film.id)
+    setTrailerSrc(YOUTUBE_TRAILER.replace('{key}', trailers[0].key))
   }
 
-  useEffect(() => {
-    fetchDummy()
-  }, [])
+  const goToDetailPage = (movie: Movie) => {
+    navigate(`/details/${movie.id}`)
+  }
 
   return (
     <>
       <DefaultLayout>
+      <TrailerModal
+        onHide={() => setTrailerSrc('')}
+        src={trailerSrc}
+      ></TrailerModal>
         <Section className='py-0 '>
           <Slider className='slick-slider' autoplay={true} slidesToShow={1} slidesToScroll={1}>
-            {(onSwipe) =>
-              trending.map((movie, i) => (
+            {(isSwipe) =>
+              trendings?.map((movie, i) => (
                 <Trending
                   onClick={() => {
-                    !onSwipe ?? navigate(`/movie/${movie.id}`)
+                    !isSwipe ?? navigate(`/movie/${movie.id}`)
                   }}
-                  onPlayTrailer={() => console.log('play trailer')}
+                  onPlayTrailer={() => playTrailer(movie)}
                   movie={movie}
                   key={i}
                 ></Trending>
@@ -63,12 +55,35 @@ export default function HomePage() {
           </Slider>
         </Section>
         <Section title='In Theaters'>
-          <MovieSlider className='slick-slider movie-slider' autoplay={true} slidesToShow={5} slidesToScroll={5}>
-            {(_) => inTheaters.map((movie, i) => <Card title={movie.name} imageSrc='' key={i} onClick={() => console.log('click')}></Card>)}
+          <MovieSlider className='slick-slider movie-slider' slidesToShow={5} slidesToScroll={5}>
+            {(_) =>
+              inTheaters?.map((movie, i) => (
+                <Card
+                  withPlay={false}
+                  title={movie.name}
+                  imageSrc={getFulImageSrc(movie.poster_path, 'w500')}
+                  key={i}
+                  onClick={() => goToDetailPage(movie)}
+                ></Card>
+              ))
+            }
           </MovieSlider>
         </Section>
-        {/* <ul>{result.data?.map((movie) => <li key={movie.id}>{movie.name}</li>)}</ul>
-        <button onClick={() => setPage(page + 1)}>Next</button> */}
+        <Section title='Populars'>
+          <MovieSlider className='slick-slider movie-slider' slidesToShow={5} slidesToScroll={5}>
+            {(_) =>
+              populars?.map((movie, i) => (
+                <Card
+                  withPlay={false}
+                  title={movie.name}
+                  imageSrc={getFulImageSrc(movie.poster_path, 'w500')}
+                  key={i}
+                  onClick={() => goToDetailPage(movie)}
+                ></Card>
+              ))
+            }
+          </MovieSlider>
+        </Section>
       </DefaultLayout>
     </>
   )

@@ -1,13 +1,16 @@
 import { RouterProvider } from 'react-router-dom'
 import Router from '@/router'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { AppDataProvider } from './hooks/app-context'
 
 const queryClient = new QueryClient()
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={Router}></RouterProvider>
+      <AppDataProvider>
+        <RouterProvider router={Router}></RouterProvider>
+      </AppDataProvider>
     </QueryClientProvider>
   )
 }

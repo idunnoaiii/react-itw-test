@@ -10,7 +10,7 @@ export const Slider = (props: Props) => {
   const [isSwipe, setIsSwipe] = useState(false)
 
   return (
-    <Slick {...props} autoplaySpeed={6000} onSwipe={() => setIsSwipe(true)} afterChange={() => setIsSwipe(false)}>
+    <Slick {...props} autoplaySpeed={5000} onSwipe={() => setIsSwipe(true)} afterChange={() => setIsSwipe(false)}>
       {props.children ? props.children(isSwipe) : ''}
     </Slick>
   )

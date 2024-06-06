@@ -6,11 +6,13 @@ type Props = Omit<Settings, 'children'> & {
 }
 
 const MovieSlider = (props: Props) => {
+  
   let settings: Omit<Settings, 'children'> = {
     ...props
   }
 
   settings = {
+    autoplay: false,
     infinite: true,
     swipe: false,
     slidesToShow: 5,

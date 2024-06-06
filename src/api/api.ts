@@ -17,9 +17,13 @@ const api = (axios: AxiosInstance) => {
 }
 
 axiosInstance.interceptors.request.use((config) => {
-  //   config.headers['Content-Type'] = 'application/json'
-  config.url = config.url?.concat('&api_key=92b418e837b833be308bbfb1fb2aca1e')
-  return config
+  return {
+    ...config,
+    params: {
+      api_key: import.meta.env.VITE_API_KEY,
+      ...config.params
+    }
+  }
 })
 
 export default api(axiosInstance)

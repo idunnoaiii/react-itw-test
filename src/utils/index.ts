@@ -1,13 +1,13 @@
-export const joinClassName = (...classes: string[]): string => {
-  return classes.filter(Boolean).join(' ')
-}
+import { YOUTUBE_THUMBNAIL } from "@/constants"
 
-export const getFulImageSrc = (path: string) => {
+export type ImageSize = 'w500' | 'w780' | 'w1280' | 'original'
+
+export const getFulImageSrc = (path: string, size: ImageSize = 'w500') => {
   if (!path) return ''
 
-  return `https://image.tmdb.org/t/p/original/${path}`
+  return `https://image.tmdb.org/t/p/${size}/${path}`
 }
 
 export const youtubeThumbnail = (key: string) => {
-  return `https://img.youtube.com/vi/${key}/mqdefault.jpg`
+  return YOUTUBE_THUMBNAIL.replace('{key}', key)
 }
