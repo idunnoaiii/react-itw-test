@@ -1,4 +1,4 @@
-export const Footer = () => {
+const Footer = () => {
   return (
     <div className="p-6 text-center">
       <p className="text-sm opacity-[0.7]">
@@ -7,3 +7,5 @@ export const Footer = () => {
     </div>
   )
 }
+
+export default Footer

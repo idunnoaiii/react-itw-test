@@ -1,5 +1,6 @@
+/* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
-export default {
+export default  {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -40,7 +41,7 @@ export default {
     },
   },
   plugins: [
-    // require('tailwind-scrollbar'),
-    // require('tailwindcss/line-clamp')
+     require('@tailwindcss/line-clamp'),
+      require('tailwind-scrollbar')
   ],
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Image from '@/components/image'
 import { getFulImageSrc as getFullImgSrc, youtubeThumbnail } from '@/utils'
@@ -30,11 +30,17 @@ export default function MovieDetailPage() {
 
   const fetch = async () => {
     const arr: any = []
-    for (let i = 0; i < 10; i++) {}
+    for (let i = 0; i < 20; i++) {
+      arr.push(i)
+    }
    
-    setCasts([])
-    setTrailers([])
+    setCasts(arr)
+    setTrailers(arr)
   }
+
+  useEffect(() => {
+    fetch()
+  }, [])
 
   const { params } = useParams()
 
@@ -71,7 +77,7 @@ export default function MovieDetailPage() {
 
       {/* casts */}
       <Section title='Casts' hidden={casts.length === 0}>
-        <div className='scrollbar scrollbar-thumb-primary scrollbar-track-header'>
+        <div className='overflow-x-scroll scrollbar-thin scrollbar-thumb-primary scrollbar-track-header'>
           <div className='flex items-center gap-3'>
             {casts.map((cast, i) => (
               <div className='flex-shrink-0 w-[200px] mb-6' key={i}>
@@ -87,7 +93,7 @@ export default function MovieDetailPage() {
 
       {/* trailers */}
       <Section title='Trailers' hidden={trailers.length === 0}>
-        <div className='scrollbar scrollbar-thumb-primary scrollbar-track-header'>
+        <div className='overflow-x-scroll scrollbar-thin scrollbar-thumb-primary scrollbar-track-header'>
           <div className='flex items-center gap-3 h-[300px]'>
             {trailers.map((trailer, i) => (
               <Card

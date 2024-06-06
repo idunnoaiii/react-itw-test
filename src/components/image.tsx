@@ -1,15 +1,23 @@
 import { CommonProps } from '@/components/commons/common-props'
-import { joinClassName } from '@/utils'
+import { twMerge } from 'tailwind-merge'
 
 type Props = CommonProps & {
   src: string
   alt?: string
 }
 
-const Image = ({ src, className, alt }: Props) => {
+export const Image = (props: Props) => {
   return (
-    <div className={joinClassName('bg-primary h-full w-full rounded-lg overflow-hidden', className ?? '')}>
-      <img src={src} className='min-h-[200px] w-full h-full object-cover' alt={alt ?? ''}></img>
+    <div
+      className={twMerge(
+        'bg-primary h-full w-full rounded-lg overflow-hidden',
+        props.className ?? ''
+      )}
+    >
+      <img
+        src={props.src}
+        className="min-h-[200px] w-full h-full object-cover"
+      ></img>
     </div>
   )
 }
