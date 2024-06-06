@@ -4,3 +4,6 @@ export type BasePagedResponse<T> = {
     total_pages: number,
     total_results: number
 }
+
+
+export type Optional<T> = T | null 

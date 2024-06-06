@@ -1,19 +1,29 @@
-
 export type Movie = {
-    title: string,
-    id: number
-    adult: boolean
-    backdrop_path: string
-    genre_ids: number[]
-    origin_country: string[]
-    original_language: string
-    original_name: string
-    overview: string
-    popularity: number
-    poster_path: string
-    first_air_date: string
-    name: string
-    vote_average: number
-    vote_count: number
-  }
-  
+  title?: string
+  id: number
+  adult: boolean
+  backdrop_path: string
+  genre_ids: number[]
+  origin_country: string[]
+  original_language: string
+  original_name: string
+  overview: string
+  popularity: number
+  poster_path: string
+  first_air_date: string
+  name: string
+  vote_average: number
+  vote_count: number
+}
+
+export type Cast = {
+  profilePath: string
+  id: number
+  name: string
+  characterName: string
+}
+
+export type Trailer = {
+  id: number
+  key: string
+}

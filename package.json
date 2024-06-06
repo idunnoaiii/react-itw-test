@@ -25,6 +25,7 @@
     "react-router-dom": "^6.23.1",
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1",
+    "tailwind-scrollbar": "^3.1.0",
     "ts-pattern": "^5.1.2"
   },
   "devDependencies": {

@@ -64,7 +64,7 @@ export default function HomePage() {
         </Section>
         <Section title='In Theaters'>
           <MovieSlider className='slick-slider movie-slider' autoplay={true} slidesToShow={5} slidesToScroll={5}>
-            {(_) => inTheaters.map((movie, i) => <Card movie={movie} key={i} onClick={() => console.log('click')}></Card>)}
+            {(_) => inTheaters.map((movie, i) => <Card title={movie.name} imageSrc='' key={i} onClick={() => console.log('click')}></Card>)}
           </MovieSlider>
         </Section>
         {/* <ul>{result.data?.map((movie) => <li key={movie.id}>{movie.name}</li>)}</ul>

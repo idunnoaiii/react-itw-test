@@ -6,7 +6,7 @@ type Props = CommonProps & {
   alt?: string
 }
 
-const image = ({ src, className, alt }: Props) => {
+const Image = ({ src, className, alt }: Props) => {
   return (
     <div className={joinClassName('bg-primary h-full w-full rounded-lg overflow-hidden', className ?? '')}>
       <img src={src} className='min-h-[200px] w-full h-full object-cover' alt={alt ?? ''}></img>
@@ -14,4 +14,4 @@ const image = ({ src, className, alt }: Props) => {
   )
 }
 
-export default image
+export default Image
