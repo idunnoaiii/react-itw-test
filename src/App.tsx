@@ -1,4 +1,3 @@
-import './App.css'
 import { RouterProvider } from 'react-router-dom'
 import Router from '@/router'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'

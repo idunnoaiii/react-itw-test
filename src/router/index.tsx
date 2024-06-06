@@ -1,7 +1,6 @@
-import HomePage from '@/pages/home/HomePage';
-import Home from '@/pages/home/HomePage';
-import { MovieDetail } from '@/pages/movie-details/MovieDetailPage';
-import { MovieDetailPage } from '@/pages/movie-details/MovieDetailPage';
+
+import HomePage from '@/pages/home/home-page';
+import MovieDetailPage from '@/pages/movie-details/detail-page';
 import { createBrowserRouter } from 'react-router-dom'
 
 const Router = createBrowserRouter([
@@ -10,7 +9,11 @@ const Router = createBrowserRouter([
     element: <HomePage></HomePage>
   },
   {
-    path: '/details',
+    path: '/movies',
+    element: <HomePage></HomePage>
+  },
+  {
+    path: '/details:id',
     element: <MovieDetailPage></MovieDetailPage>
   }
 ])
