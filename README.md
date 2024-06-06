@@ -1,44 +1,75 @@
-# React + TypeScript + Vite
+# Project: TheMovie
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Features
 
-Currently, two official plugins are available:
+TheMovie has the following features:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Home page: Displays a list of movies with their titles, posters, and ratings.
+- Details page: Displays detailed information about a specific movie, including its title, poster, overview, cast, and trailer.
 
-## Expanding the ESLint configuration
+# Project Description
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+TheMovie is a movie streaming app that allows users to browse and watch movies.
 
-- Configure the top-level `parserOptions` property like this:
+- The project is built using React, Typescript, and Vite.
+- The app uses Tailwind CSS for styling.
+- The app uses React Router for routing.
+- The app uses React Query for data fetching.
+- The app uses Axios for making API requests. Api is provided by themoviedb.org.
+- The app configures ESLint and Prettier for code linting and formatting.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname
-  }
-}
+
+## Project Structure
+
+The project is structured as follows:
+
 ```
+src/
+  components/
+    card.tsx
+    image.tsx
+    layout/
+      default-layout.tsx
+      full-app-loading.tsx
+    movie-slider.tsx
+    section.tsx
+  constants.ts
+  pages/
+    home/
+      components/
+        movie-slider.tsx
+      hooks.ts
+      index.tsx
+    movie-details/
+      components/
+        trailer-modal.tsx
+      hooks.ts
+      index.tsx
+  utils.ts
+```
+- This structure follow the feature-based approach, where each feature is a separate folder with its own components, hooks, and index files.
+- The `components` folder contains the reusable components used throughout the app, such as `Card`, `Image`, `Section`, and `MovieSlider`.
+- The `constants` file contains global constants used throughout the app, such as the API endpoints and the default layout.
+- The `pages` folder contains the pages of the app, including the home page, movie details page, and movie slider page.
+- The `utils` file contains utility functions used throughout the app.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Project Dependencies
 
-# Note
+The project has the following dependencies:
 
-- Im using vite to quickly create an app
-- Config tailwind css for application `https://tailwindcss.com/docs/guides/vite`
-- config eslint and prettier
-- add storybook
-- add testing jet
-- add react-query
+- React
+- Typescript
+- Vite
+- Tailwind CSS
+- React Router
+- React Query
+- Axios
+- ESLint
+- Prettier
 
-## Code structure
+## Project Setup
+
+To set up the project, follow these steps:
   - setup struct feature-based
    - benefit
     - clear separation of concerns

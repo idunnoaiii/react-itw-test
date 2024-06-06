@@ -12,13 +12,14 @@ import { getFulImageSrc } from '@/utils'
 import { getTrailers } from '@/api/movie.api'
 import { TrailerModal } from '@/components/trailer-modal'
 import { YOUTUBE_TRAILER } from '@/constants'
+import FullAppLoading from '@/components/layout/full-app-loading'
 
 export default function HomePage() {
   const navigate = useNavigate()
 
-  const { data: trendings } = useGetTrendings()
-  const { data: inTheaters } = useGetInTheaters()
-  const { data: populars } = useGetPopulars()
+  const { data: trendings, isLoading: trendingsLoading } = useGetTrendings()
+  const { data: inTheaters, isLoading: inTheatersLoading } = useGetInTheaters()
+  const { data: populars, isLoading: popularsLoading } = useGetPopulars()
 
   const [trailerSrc, setTrailerSrc] = useState('')
 
@@ -29,6 +30,10 @@ export default function HomePage() {
 
   const goToDetailPage = (movie: Movie) => {
     navigate(`/details/${movie.id}`)
+  }
+
+  if (trendingsLoading || inTheatersLoading || popularsLoading) {
+    return <FullAppLoading></FullAppLoading>
   }
 
   return (

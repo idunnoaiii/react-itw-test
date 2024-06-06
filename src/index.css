@@ -33,19 +33,6 @@ body {
   color: theme('colors.white');
 }
 
-/* @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
-
 .overlay-slick-slider {
   position: absolute;
   left: 0;
@@ -73,7 +60,3 @@ body {
   );
 }
 
-.root {
-  height: 100vh;
-  width: 100vw;
-}

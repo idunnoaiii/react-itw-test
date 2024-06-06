@@ -1,6 +1,5 @@
 import Container from '@/components/container'
 import DefaultLayout from '@/components/layout/default-layout'
-import React from 'react'
 
 const NotFoundPage = () => {
   return (
