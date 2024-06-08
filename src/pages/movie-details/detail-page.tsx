@@ -2,7 +2,7 @@ import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import Image from '@/components/image'
 import { getFulImageSrc, youtubeThumbnail } from '@/utils'
 import Section from '@/components/section'
-import { Card } from '@/components/card'
+import Card from '@/components/card'
 import MovieSlider from '@/pages/home/components/movie-slider'
 import {
   useGetCasts,

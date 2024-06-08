@@ -22,8 +22,8 @@
     "baseUrl": "./src",
     "paths": {
       "@/*": ["./*"]
-    }
-    
+    },
+    "types": ["vitest/globals"],
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }],
@@ -32,4 +32,5 @@
   // "isolatedModules": true,
   // "noEmit": true,
   // "jsx": "react-jsx"
+  "src": ["src", ".src/test/setup.ts"]
 }

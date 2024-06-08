@@ -11,7 +11,8 @@ type Props = CommonProps & {
   withPlay?: boolean
 }
 
-export const Card = (props: Props) => {
+
+const Card = (props: Props) => {
   const withPlay = props.withPlay ?? true
 
   return (
@@ -70,3 +71,5 @@ export const Card = (props: Props) => {
     </div>
   )
 }
+
+export default Card

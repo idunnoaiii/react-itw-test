@@ -1,6 +1,6 @@
 import { CommonProps } from '@/components/common/common-props'
 import Container from '@/components/container'
-import { twMerge } from 'tailwind-merge'
+import { cn } from '@/utils'
 
 type Props = CommonProps & {
   title?: string
@@ -16,7 +16,7 @@ export const Section = (props: Props) => {
       {props.title && (
         <h1
           onClick={props.onTitleClick}
-          className={twMerge(
+          className={cn(
             'text-xl px-3 py-2',
             props.onTitleClick ? 'cursor-pointer hover:text-primary' : ''
           )}

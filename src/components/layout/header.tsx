@@ -46,7 +46,7 @@ const Header = () => {
   }, [])
 
   return (
-    <div className='bg-body sticky top-0 z-20'>
+    <nav className='bg-body sticky top-0 z-20'>
       <Container className='flex justify-between'>
         <div className='flex items-center gap-6'>
           <h1 className='text-2xl'>
@@ -77,7 +77,7 @@ const Header = () => {
           </div>
         </div>
       </Container>
-    </div>
+    </nav>
   )
 }
 

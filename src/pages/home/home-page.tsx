@@ -1,8 +1,6 @@
-import DefaultLayout from '@/components/layout/default-layout'
-import Section from '@/components/section'
 import { Slider } from '@/components/slider/slider'
 import Trending from './components/trending'
-import { Card } from '@/components/card'
+import Card from '@/components/card'
 import { useNavigate } from 'react-router-dom'
 import MovieSlider from '@/pages/home/components/movie-slider'
 import {
@@ -17,6 +15,8 @@ import { getTrailers } from '@/api/movie.api'
 import { TrailerModal } from '@/pages/shared/trailer-modal'
 import { YOUTUBE_TRAILER } from '@/constants'
 import FullAppLoading from '@/components/layout/full-app-loading'
+import DefaultLayout from '@/components/layout/default-layout'
+import Section from '@/components/section'
 
 export default function HomePage() {
   const navigate = useNavigate()
