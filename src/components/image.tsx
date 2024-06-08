@@ -11,7 +11,7 @@ export const Image = (props: Props) => {
     <div
       className={twMerge(
         'bg-primary h-full w-full rounded-lg overflow-hidden',
-        props.className ?? ''
+        props.className
       )}
     >
       <img

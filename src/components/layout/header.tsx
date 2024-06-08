@@ -1,4 +1,4 @@
-import Container from '../container'
+import Container from '@/components/container'
 import { Link, useSearchParams } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
 import { twJoin } from 'tailwind-merge'
@@ -19,7 +19,7 @@ const Header = () => {
   const defaultKeyword = useRef('')
   const pathnameRef = useRef('')
   const [pathname, setPathname] = useState('')
-  const [params, _] = useSearchParams()
+  const [searchParams] = useSearchParams()
 
   const getMenuClass = (path: string) => {
     if (path === pathname) {
@@ -34,7 +34,7 @@ const Header = () => {
   useEffect(() => {
     setPathname(location.pathname)
     pathnameRef.current = location.pathname
-    defaultKeyword.current = params.get('q') || ''
+    defaultKeyword.current = searchParams.get('q') || ''
   }, [location.pathname])
 
   useEffect(() => {

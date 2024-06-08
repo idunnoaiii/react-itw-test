@@ -16,7 +16,7 @@ export const Card = (props: Props) => {
 
   return (
     <div
-      onClick={() => (props.onClick ? props.onClick() : '')}
+      onClick={() => props.onClick?.()}
       className={twMerge('group mx-3 my-1.5 cursor-pointer', props.className ?? '')}
     >
       <div

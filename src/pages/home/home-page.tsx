@@ -10,7 +10,7 @@ import { Movie } from '@/types/movie'
 import { useState } from 'react'
 import { getFulImageSrc } from '@/utils'
 import { getTrailers } from '@/api/movie.api'
-import { TrailerModal } from '@/components/trailer-modal'
+import { TrailerModal } from '@/pages/shared/trailer-modal'
 import { YOUTUBE_TRAILER } from '@/constants'
 import FullAppLoading from '@/components/layout/full-app-loading'
 
@@ -39,21 +39,18 @@ export default function HomePage() {
   return (
     <>
       <DefaultLayout>
-      <TrailerModal
-        onHide={() => setTrailerSrc('')}
-        src={trailerSrc}
-      ></TrailerModal>
+        <TrailerModal onHide={() => setTrailerSrc('')} src={trailerSrc}></TrailerModal>
         <Section className='py-0 '>
           <Slider className='slick-slider' autoplay={true} slidesToShow={1} slidesToScroll={1}>
             {(isSwipe) =>
-              trendings?.map((movie, i) => (
+              trendings?.map((movie) => (
                 <Trending
                   onClick={() => {
                     !isSwipe ?? navigate(`/movie/${movie.id}`)
                   }}
                   onPlayTrailer={() => playTrailer(movie)}
                   movie={movie}
-                  key={i}
+                  key={movie.id}
                 ></Trending>
               ))
             }
@@ -61,13 +58,13 @@ export default function HomePage() {
         </Section>
         <Section title='In Theaters'>
           <MovieSlider className='slick-slider movie-slider' slidesToShow={5} slidesToScroll={5}>
-            {(_) =>
-              inTheaters?.map((movie, i) => (
+            {() =>
+              inTheaters?.map((movie) => (
                 <Card
                   withPlay={false}
                   title={movie.name}
                   imageSrc={getFulImageSrc(movie.poster_path, 'w500')}
-                  key={i}
+                  key={movie.id}
                   onClick={() => goToDetailPage(movie)}
                 ></Card>
               ))
@@ -76,13 +73,13 @@ export default function HomePage() {
         </Section>
         <Section title='Populars'>
           <MovieSlider className='slick-slider movie-slider' slidesToShow={5} slidesToScroll={5}>
-            {(_) =>
-              populars?.map((movie, i) => (
+            {() =>
+              populars?.map((movie) => (
                 <Card
                   withPlay={false}
                   title={movie.name}
                   imageSrc={getFulImageSrc(movie.poster_path, 'w500')}
-                  key={i}
+                  key={movie.id}
                   onClick={() => goToDetailPage(movie)}
                 ></Card>
               ))

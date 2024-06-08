@@ -4,17 +4,17 @@ import { getGenres } from '@/api/movie.api'
 import FullAppLoading from '@/components/layout/full-app-loading'
 
 export type AppContextType = {
-  geners: Genre[]
+  genres: Genre[]
 }
 
 const AppDataContext = createContext<AppContextType>({
-  geners: []
+  genres: []
 })
 AppDataContext.displayName = 'AppDataContext'
 
 function AppDataProvider({ children }: { children: React.ReactNode }) {
   const [appData, setAppData] = useState<AppContextType>({
-    geners: []
+    genres: []
   })
 
   useEffect(() => {
@@ -22,13 +22,13 @@ function AppDataProvider({ children }: { children: React.ReactNode }) {
       setTimeout(() => {
         setAppData({
           ...appData,
-          geners: geners
+          genres: geners
         })
       }, 2000)
     })
   }, [])
 
-  if (appData.geners.length === 0) {
+  if (appData.genres?.length === 0) {
     return <FullAppLoading />
   }
 

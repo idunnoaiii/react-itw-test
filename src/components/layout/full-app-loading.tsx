@@ -1,4 +1,4 @@
-import { Loading } from './loading'
+import { Loading } from '@/components/layout/loading'
 
 const FullAppLoading = () => {
   return (

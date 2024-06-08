@@ -1,23 +1,23 @@
 import { useEffect, useState } from 'react'
 import { IoIosClose } from 'react-icons/io'
-import Container from './container'
+import Container from '@/components/container'
 
 type Props = {
   src: string | null
   onHide: () => void
 }
 
-export const TrailerModal = (props: Props) => {
+export const TrailerModal = ({src, onHide}: Props) => {
   const [show, setShow] = useState(false)
 
   const hide = () => {
     setShow(false)
-    props.onHide()
+    onHide()
   }
 
   useEffect(() => {
-    if (props.src) setShow(true)
-  }, [props.src])
+    if (src) setShow(true)
+  }, [src])
 
   return (
     <div
@@ -77,7 +77,7 @@ export const TrailerModal = (props: Props) => {
               <IoIosClose size={18}></IoIosClose>
             </button>
           </div>
-          {show ? <iframe src={props.src as string} className='w-full h-[700px]'></iframe> : ''}
+          {show ? <iframe src={src as string} className='w-full h-[700px]'></iframe> : ''}
         </div>
       </Container>
     </div>
