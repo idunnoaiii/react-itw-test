@@ -1,7 +1,9 @@
-import { CommonProps } from '@/components/common/common-props'
 import { cn } from '@/utils'
+import { ComponentProps } from 'react'
 
-const Container = ({ children, className }: CommonProps) => {
+type Props = ComponentProps<'div'>
+
+const Container = ({ children, className }: Props) => {
   return (
     <div className={cn('px-6 py-3 max-w-screen-2xl mx-auto', className)}>
       {children}

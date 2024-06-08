@@ -1,8 +1,9 @@
-import { Navigate, useNavigate, useParams } from 'react-router-dom'
-import Image from '@/components/image'
-import { getFulImageSrc, youtubeThumbnail } from '@/utils'
-import Section from '@/components/section'
 import Card from '@/components/card'
+import Image from '@/components/image'
+import DefaultLayout from '@/components/layout/default-layout'
+import FullAppLoading from '@/components/layout/full-app-loading'
+import Section from '@/components/section'
+import { YOUTUBE_TRAILER } from '@/constants'
 import MovieSlider from '@/pages/home/components/movie-slider'
 import {
   useGetCasts,
@@ -10,11 +11,10 @@ import {
   useGetRecommendations,
   useGetTrailers
 } from '@/pages/movie-details/hooks'
-import DefaultLayout from '@/components/layout/default-layout'
-import FullAppLoading from '@/components/layout/full-app-loading'
 import { TrailerModal } from '@/pages/shared/trailer-modal'
+import { getFulImageSrc, youtubeThumbnail } from '@/utils'
 import { useState } from 'react'
-import { YOUTUBE_TRAILER } from '@/constants'
+import { Navigate, useNavigate, useParams } from 'react-router-dom'
 
 export default function MovieDetailPage() {
   const { id } = useParams()
