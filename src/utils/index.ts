@@ -1,4 +1,4 @@
-import { YOUTUBE_THUMBNAIL } from "@/constants"
+import { YOUTUBE_THUMBNAIL } from '@/constants'
 
 export type ImageSize = 'w500' | 'w780' | 'w1280' | 'original'
 

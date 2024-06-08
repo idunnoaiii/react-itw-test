@@ -1,4 +1,4 @@
-import { CommonProps } from '@/components/commons/common-props'
+import { CommonProps } from '@/components/common/common-props'
 import Container from '@/components/container'
 import { twMerge } from 'tailwind-merge'
 
@@ -16,7 +16,10 @@ export const Section = (props: Props) => {
       {props.title && (
         <h1
           onClick={props.onTitleClick}
-          className={twMerge('text-xl px-3 py-2', props.onTitleClick ? 'cursor-pointer hover:text-primary' : '')}
+          className={twMerge(
+            'text-xl px-3 py-2',
+            props.onTitleClick ? 'cursor-pointer hover:text-primary' : ''
+          )}
           dangerouslySetInnerHTML={{
             __html: props.title
           }}

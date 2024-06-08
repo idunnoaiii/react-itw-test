@@ -7,7 +7,7 @@ type Props = {
   onHide: () => void
 }
 
-export const TrailerModal = ({src, onHide}: Props) => {
+export const TrailerModal = ({ src, onHide }: Props) => {
   const [show, setShow] = useState(false)
 
   const hide = () => {
@@ -23,11 +23,7 @@ export const TrailerModal = ({src, onHide}: Props) => {
     <div
       onClick={() => hide()}
       className={`
-            ${
-              show
-                ? `opacity-[1]`
-                : 'opacity-0 pointer-events-none'
-            }
+            ${show ? `opacity-[1]` : 'opacity-0 pointer-events-none'}
             ease-in-out
             duration-300
             fixed
@@ -53,17 +49,7 @@ export const TrailerModal = ({src, onHide}: Props) => {
           transition-[margin,opacity]
           ease-in-out
           duration-300
-          ${
-            show
-              ? `
-                mt-0
-                opacity-[1]
-              `
-              : `
-                -mt-[200px]
-                opacity-0
-              `
-          }
+          ${show ? ` mt-0 opacity-[1] ` : ` -mt-[200px] opacity-0 `}
         `}
       >
         <div
@@ -77,7 +63,15 @@ export const TrailerModal = ({src, onHide}: Props) => {
               <IoIosClose size={18}></IoIosClose>
             </button>
           </div>
-          {show ? <iframe src={src as string} className='w-full h-[700px]'></iframe> : ''}
+          {show ? (
+            <iframe
+              title='Trailer'
+              src={src as string}
+              className='w-full h-[700px]'
+            ></iframe>
+          ) : (
+            ''
+          )}
         </div>
       </Container>
     </div>

@@ -1,4 +1,4 @@
-import { CommonProps } from '@/components/commons/common-props'
+import { CommonProps } from '@/components/common/common-props'
 import { twMerge } from 'tailwind-merge'
 
 type Props = CommonProps & {
@@ -16,7 +16,7 @@ export const Image = (props: Props) => {
     >
       <img
         src={props.src}
-        className="min-h-[200px] w-full h-full object-cover"
+        className='min-h-[200px] w-full h-full object-cover'
         alt={props.alt ?? ''}
       ></img>
     </div>

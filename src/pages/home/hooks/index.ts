@@ -1,4 +1,9 @@
-import { getInTheaterMovies, getPopulars, getTrailers, getTrendingMoviess } from '@/api/movie.api'
+import {
+  getInTheaterMovies,
+  getPopulars,
+  getTrailers,
+  getTrendingMoviess
+} from '@/api/movie.api'
 import { useQuery } from '@tanstack/react-query'
 
 export const useGetTrendings = () => {
@@ -21,7 +26,6 @@ export const useGetTrailer = (id: number) => {
     queryFn: () => getTrailers(id).then((res) => res?.[0])
   })
 }
-
 
 export const useGetInTheaters = () => {
   return useQuery({

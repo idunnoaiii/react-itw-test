@@ -3,7 +3,7 @@ import { Loading } from '@/components/layout/loading'
 const FullAppLoading = () => {
   return (
     <div className='fixed left-0 top-0 right-0 bottom-0 flex justify-center items-center'>
-        <Loading />
+      <Loading />
     </div>
   )
 }

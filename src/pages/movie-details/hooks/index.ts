@@ -1,4 +1,9 @@
-import { getCasts, getMovieDetail, getRecommendations, getTrailers } from '@/api/movie.api'
+import {
+  getCasts,
+  getMovieDetail,
+  getRecommendations,
+  getTrailers
+} from '@/api/movie.api'
 import { useQuery } from '@tanstack/react-query'
 
 export const useGetInTheaters = (id: number) => {

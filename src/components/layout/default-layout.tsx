@@ -9,9 +9,9 @@ type Props = {
 const DefaultLayout = ({ children }: Props) => {
   return (
     <>
-      <Header/>
+      <Header />
       {children}
-      <Footer/>
+      <Footer />
     </>
   )
 }

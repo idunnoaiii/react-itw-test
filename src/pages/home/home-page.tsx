@@ -5,7 +5,11 @@ import Trending from './components/trending'
 import { Card } from '@/components/card'
 import { useNavigate } from 'react-router-dom'
 import MovieSlider from '@/pages/home/components/movie-slider'
-import { useGetInTheaters, useGetPopulars, useGetTrendings } from '@/pages/home/hooks'
+import {
+  useGetInTheaters,
+  useGetPopulars,
+  useGetTrendings
+} from '@/pages/home/hooks'
 import { Movie } from '@/types/movie'
 import { useState } from 'react'
 import { getFulImageSrc } from '@/utils'
@@ -39,9 +43,17 @@ export default function HomePage() {
   return (
     <>
       <DefaultLayout>
-        <TrailerModal onHide={() => setTrailerSrc('')} src={trailerSrc}></TrailerModal>
+        <TrailerModal
+          onHide={() => setTrailerSrc('')}
+          src={trailerSrc}
+        ></TrailerModal>
         <Section className='py-0 '>
-          <Slider className='slick-slider' autoplay={true} slidesToShow={1} slidesToScroll={1}>
+          <Slider
+            className='slick-slider'
+            autoplay={true}
+            slidesToShow={1}
+            slidesToScroll={1}
+          >
             {(isSwipe) =>
               trendings?.map((movie) => (
                 <Trending
@@ -57,7 +69,11 @@ export default function HomePage() {
           </Slider>
         </Section>
         <Section title='In Theaters'>
-          <MovieSlider className='slick-slider movie-slider' slidesToShow={5} slidesToScroll={5}>
+          <MovieSlider
+            className='slick-slider movie-slider'
+            slidesToShow={5}
+            slidesToScroll={5}
+          >
             {() =>
               inTheaters?.map((movie) => (
                 <Card
@@ -72,7 +88,11 @@ export default function HomePage() {
           </MovieSlider>
         </Section>
         <Section title='Populars'>
-          <MovieSlider className='slick-slider movie-slider' slidesToShow={5} slidesToScroll={5}>
+          <MovieSlider
+            className='slick-slider movie-slider'
+            slidesToShow={5}
+            slidesToScroll={5}
+          >
             {() =>
               populars?.map((movie) => (
                 <Card
