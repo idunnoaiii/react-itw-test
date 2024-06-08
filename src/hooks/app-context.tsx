@@ -32,7 +32,11 @@ function AppDataProvider({ children }: { children: React.ReactNode }) {
     return <FullAppLoading />
   }
 
-  return <AppDataContext.Provider value={appData}>{children}</AppDataContext.Provider>
+  return (
+    <AppDataContext.Provider value={appData}>
+      {children}
+    </AppDataContext.Provider>
+  )
 }
 
 function useAppData() {

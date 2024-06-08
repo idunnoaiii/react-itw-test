@@ -2,7 +2,7 @@ import { MdPlayCircleFilled } from 'react-icons/md'
 
 import Image from '@/components/image'
 import { CommonProps } from '@/components/common/common-props'
-import { twMerge } from 'tailwind-merge'
+import { cn } from '@/utils'
 
 type Props = CommonProps & {
   imageSrc: string
@@ -17,10 +17,7 @@ export const Card = (props: Props) => {
   return (
     <div
       onClick={() => props.onClick?.()}
-      className={twMerge(
-        'group mx-3 my-1.5 cursor-pointer',
-        props.className ?? ''
-      )}
+      className={cn('group mx-3 my-1.5 cursor-pointer', props.className)}
     >
       <div
         className='

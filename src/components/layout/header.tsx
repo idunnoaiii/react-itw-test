@@ -68,7 +68,10 @@ const Header = () => {
             mobile:gap-6
             '
           >
-            <Link className={getMenuClass('/movies')} to={'/movies'}>
+            <Link
+              className={getMenuClass('/movies')}
+              to={'/movies'}
+            >
               Movies
             </Link>
           </div>
