@@ -1,10 +1,10 @@
 import { CommonProps } from '@/components/common/common-props'
-import { twMerge } from 'tailwind-merge'
+import { cn } from '@/utils'
 
 const Container = ({ children, className }: CommonProps) => {
   return (
     <div
-      className={twMerge('px-6 py-3 max-w-screen-2xl mx-auto', className ?? '')}
+      className={cn('px-6 py-3 max-w-screen-2xl mx-auto', className)}
     >
       {children}
     </div>

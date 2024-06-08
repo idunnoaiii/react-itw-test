@@ -1,5 +1,5 @@
 import { CommonProps } from '@/components/common/common-props'
-import { twMerge } from 'tailwind-merge'
+import { cn } from '@/utils'
 
 type Props = CommonProps & {
   src: string
@@ -9,7 +9,7 @@ type Props = CommonProps & {
 export const Image = (props: Props) => {
   return (
     <div
-      className={twMerge(
+      className={cn(
         'bg-primary h-full w-full rounded-lg overflow-hidden',
         props.className
       )}
