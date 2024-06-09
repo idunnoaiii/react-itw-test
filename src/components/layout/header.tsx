@@ -1,7 +1,7 @@
 import Container from '@/components/container'
-import { Link, useSearchParams } from 'react-router-dom'
+import { cn } from '@/utils'
 import { useEffect, useRef, useState } from 'react'
-import { twJoin } from 'tailwind-merge'
+import { Link, useSearchParams } from 'react-router-dom'
 
 const MENU_CLASS = `
   py-1
@@ -23,10 +23,10 @@ const Header = () => {
 
   const getMenuClass = (path: string) => {
     if (path === pathname) {
-      return twJoin(MENU_CLASS, MENU_CLASS_ACTIVE)
+      return cn(MENU_CLASS, MENU_CLASS_ACTIVE)
     }
 
-    return twJoin(MENU_CLASS, '')
+    return cn(MENU_CLASS, '')
   }
 
   const onWindowClick = () => {}
@@ -46,7 +46,7 @@ const Header = () => {
   }, [])
 
   return (
-    <nav className='bg-body sticky top-0 z-20'>
+    <nav className='bg-body sticky top-0 z-sticky'>
       <Container className='flex justify-between'>
         <div className='flex items-center gap-6'>
           <h1 className='text-2xl'>

@@ -1,13 +1,19 @@
-import { FaSpinner } from 'react-icons/fa'
+import { cn } from '@/utils'
+import { IconBaseProps } from 'react-icons'
+import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 
-export const Loading = () => {
+type Props = IconBaseProps & {
+  className?: string
+}
+
+export const Loading = ({ className, ...props }: Props) => {
   return (
     <div className='justify-center flex items-center gap-3'>
-      <FaSpinner
-        className='animate-spin'
-        size={32}
-      ></FaSpinner>
-      <span>Loading...</span>
+      <AiOutlineLoading3Quarters
+        size={64}
+        className={cn('animate-spin text-primary', className)}
+        {...props}
+      ></AiOutlineLoading3Quarters>
     </div>
   )
 }

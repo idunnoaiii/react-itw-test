@@ -1,6 +1,6 @@
+import Container from '@/components/container'
 import { useEffect, useState } from 'react'
 import { IoIosClose } from 'react-icons/io'
-import Container from '@/components/container'
 
 type Props = {
   src: string | null
@@ -27,7 +27,7 @@ export const TrailerModal = ({ src, onHide }: Props) => {
             ease-in-out
             duration-300
             fixed
-            z-[1080] 
+            z-modal
             top-0 
             bottom-0 
             left-0 

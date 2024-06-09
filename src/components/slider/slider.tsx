@@ -1,6 +1,10 @@
-import Slick, { Settings } from 'react-slick'
 import '@/components/slider/slider.css'
 import { useState } from 'react'
+import {
+  IoIosArrowDropleftCircle,
+  IoIosArrowDroprightCircle
+} from 'react-icons/io'
+import Slick, { Settings } from 'react-slick'
 
 type Props = Omit<Settings, 'children'> & {
   children?: (isSwipe: boolean) => React.ReactNode
@@ -15,8 +19,10 @@ export const Slider = (props: Props) => {
       autoplaySpeed={5000}
       onSwipe={() => setIsSwipe(true)}
       afterChange={() => setIsSwipe(false)}
+      nextArrow={<IoIosArrowDroprightCircle />}
+      prevArrow={<IoIosArrowDropleftCircle />}
     >
-      {props.children ? props.children(isSwipe) : ''}
+      {props.children?.(isSwipe)}
     </Slick>
   )
 }
