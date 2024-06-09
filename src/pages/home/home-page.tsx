@@ -2,7 +2,7 @@ import Card from '@/components/card'
 import DefaultLayout from '@/components/layout/default-layout'
 import FullAppLoading from '@/components/layout/full-app-loading/full-app-loading'
 import Section from '@/components/section'
-import { Slider } from '@/components/slider/slider'
+import Slider from '@/components/slider'
 import { YOUTUBE_TRAILER } from '@/constants'
 import MovieSlider from '@/pages/home/components/movie-slider'
 import {
@@ -68,7 +68,10 @@ export default function HomePage() {
             }
           </Slider>
         </Section>
-        <Section title='In Theaters'>
+        <Section
+          title='In Theaters'
+          data-test-id='in-theaters-section'
+        >
           <MovieSlider
             className='slick-slider movie-slider'
             slidesToShow={5}
@@ -78,7 +81,7 @@ export default function HomePage() {
               inTheaters?.map((movie) => (
                 <Card
                   withPlay={false}
-                  title={movie.name}
+                  title={movie.title}
                   imageSrc={getFulImageSrc(movie.poster_path, 'w500')}
                   key={movie.id}
                   onClick={() => goToDetailPage(movie)}
@@ -87,7 +90,10 @@ export default function HomePage() {
             }
           </MovieSlider>
         </Section>
-        <Section title='Populars'>
+        <Section
+          title='Populars'
+          data-test-id='in-populars-section'
+        >
           <MovieSlider
             className='slick-slider movie-slider'
             slidesToShow={5}
@@ -97,7 +103,7 @@ export default function HomePage() {
               populars?.map((movie) => (
                 <Card
                   withPlay={false}
-                  title={movie.name}
+                  title={movie.title}
                   imageSrc={getFulImageSrc(movie.poster_path, 'w500')}
                   key={movie.id}
                   onClick={() => goToDetailPage(movie)}

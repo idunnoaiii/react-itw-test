@@ -13,7 +13,7 @@ import {
 } from '@/pages/movie-details/hooks'
 import { TrailerModal } from '@/pages/shared/trailer-modal'
 import { getFulImageSrc, youtubeThumbnail } from '@/utils'
-import { useLayoutEffect, useState } from 'react'
+import { useState } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
 
 export default function MovieDetailPage() {
@@ -39,23 +39,12 @@ export default function MovieDetailPage() {
     setTrailerSrc(YOUTUBE_TRAILER.replace('{key}', key))
   }
 
-  useLayoutEffect(() => {
-    const body = document.getElementsByName('body')[0]
-    // body.addEventListener('scroll', () => {
-
-    // })
-
-    ;() => {
-      console.log('scroll')
-    }
-  }, [id])
-
   if (movieLoading || movie == undefined) {
     return <FullAppLoading></FullAppLoading>
   }
 
   if (movie == null && !movieFetched) {
-    ;<Navigate to={`404`}></Navigate>
+    ;<Navigate to={'/404'}></Navigate>
   }
 
   return (
@@ -67,11 +56,6 @@ export default function MovieDetailPage() {
       <DefaultLayout>
         <div className='h-[550px] left-0 right-0 top-0 relative'>
           <div className='overlay-card-cover'></div>
-          {/* <Image
-            src={getFulImageSrc(movie.backdrop_path, 'original')}
-            className='rounded-0 rounded-none object-top'
-          ></Image> */}
-
           <img
             src={getFulImageSrc(movie.backdrop_path, 'original')}
             className='min-h-[200px] rounded-0 rounded-none w-full h-full object-cover object-top'
@@ -113,7 +97,7 @@ export default function MovieDetailPage() {
                 >
                   <Card
                     withPlay={false}
-                    imageSrc={getFulImageSrc(cast.profile_path, 'w500')}
+                    imageSrc={getFulImageSrc(cast.profile_path ?? '', 'w500')}
                     imageAlt={cast.name}
                   >
                     <p className='font-semibold'>{cast.name}</p>

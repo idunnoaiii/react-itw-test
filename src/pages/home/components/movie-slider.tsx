@@ -1,4 +1,4 @@
-import { Slider } from '@/components/slider/slider'
+import Slider from '@/components/slider'
 import { Settings } from 'react-slick'
 
 type Props = Omit<Settings, 'children'> & {
@@ -37,4 +37,5 @@ const MovieSlider = (props: Props) => {
 
   return <Slider {...settings}>{props.children}</Slider>
 }
+
 export default MovieSlider

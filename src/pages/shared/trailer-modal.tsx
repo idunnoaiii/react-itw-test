@@ -21,6 +21,8 @@ export const TrailerModal = ({ src, onHide }: Props) => {
 
   return (
     <div
+      role='dialog'
+      aria-modal='true'
       onClick={() => hide()}
       className={`
             ${show ? `opacity-[1]` : 'opacity-0 pointer-events-none'}

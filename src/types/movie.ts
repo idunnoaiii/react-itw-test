@@ -1,5 +1,5 @@
 export type Movie = {
-  title?: string
+  title: string
   id: number
   adult: boolean
   backdrop_path: string
@@ -11,7 +11,6 @@ export type Movie = {
   popularity: number
   poster_path: string
   first_air_date?: string
-  name?: string
   vote_average: number
   vote_count: number
 }

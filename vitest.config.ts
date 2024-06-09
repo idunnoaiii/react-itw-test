@@ -1,6 +1,6 @@
 /// <reference types="vitest" />
 
-import { defineConfig, configDefaults } from 'vitest/config'
+import { configDefaults, defineConfig } from 'vitest/config'
 
 export default defineConfig({
   test: {
@@ -16,7 +16,8 @@ export default defineConfig({
       'src/main.tsx',
       '.storybook/**/*',
       '.eslintrc.cjs',
-      'src/stories/**/*'
+      'src/stories/**/*',
+      '*.config.{js,cjs,mjs,ts}'
     ],
     coverage: {
       provider: 'v8',
@@ -28,7 +29,8 @@ export default defineConfig({
         'src/main.tsx',
         '.storybook/**/*',
         '.eslintrc.cjs',
-        'src/stories/**/*'
+        'src/stories/**/*',
+        '*.config.{js,cjs,mjs,ts}'
       ]
     }
   },

@@ -22,7 +22,7 @@ const SlickArrowFix = ({
     'attr-currentslide': currentSlide
   })
 
-export const Slider = ({ children, ...props }: Props) => {
+const Slider = ({ children, ...props }: Props) => {
   const [isSwipe, setIsSwipe] = useState(false)
 
   return (
@@ -46,3 +46,5 @@ export const Slider = ({ children, ...props }: Props) => {
     </Slick>
   )
 }
+
+export default Slider
