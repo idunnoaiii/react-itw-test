@@ -25,6 +25,9 @@ dist-ssr
 *.sw?
 .env
 
+# Test coverage
+src/test/unit/coverage
+
 **/__snapshots__/*
 
 *storybook.log
