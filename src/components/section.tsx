@@ -1,8 +1,8 @@
-import { CommonProps } from '@/components/common/common-props'
 import Container from '@/components/container'
 import { cn } from '@/utils'
+import { ComponentProps } from 'react'
 
-type Props = CommonProps & {
+type Props = ComponentProps<'div'> & {
   title?: string
   onTitleClick?: () => void
   hidden?: boolean
@@ -12,9 +12,13 @@ export const Section = (props: Props) => {
   if (props.hidden) return <></>
 
   return (
-    <Container className={props.className}>
+    <Container
+      className={props.className}
+      {...props}
+    >
       {props.title && (
         <h1
+          role='title'
           onClick={props.onTitleClick}
           className={cn(
             'text-xl px-3 py-2',

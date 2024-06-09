@@ -31,4 +31,13 @@ axiosInstance.interceptors.request.use((config) => {
   }
 })
 
+axiosInstance.interceptors.response.use(
+  (response) => {
+    return response
+  },
+  (error) => {
+    return Promise.reject(error)
+  }
+)
+
 export default api(axiosInstance)

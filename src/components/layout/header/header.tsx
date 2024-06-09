@@ -49,8 +49,16 @@ const Header = () => {
     <nav className='bg-body sticky top-0 z-sticky'>
       <Container className='flex justify-between'>
         <div className='flex items-center gap-6'>
-          <h1 className='text-2xl'>
-            <Link to={'/'}>TheMovie</Link>
+          <h1
+            role='brand'
+            className='text-2xl font-bold'
+          >
+            <Link
+              to={'/'}
+              role='brand-name'
+            >
+              TheMovie
+            </Link>
           </h1>
           <div
             className='

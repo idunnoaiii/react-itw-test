@@ -1,10 +1,7 @@
-import { CommonProps } from '@/components/common/common-props'
 import { cn } from '@/utils'
+import { ComponentProps } from 'react'
 
-type Props = CommonProps & {
-  src: string
-  alt?: string
-}
+type Props = ComponentProps<'img'>
 
 export const Image = (props: Props) => {
   return (

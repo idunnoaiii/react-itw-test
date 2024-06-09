@@ -1,16 +1,28 @@
 import '@/components/slider/slider.css'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import {
   IoIosArrowDropleftCircle,
   IoIosArrowDroprightCircle
 } from 'react-icons/io'
-import Slick, { Settings } from 'react-slick'
+import Slick, { CustomArrowProps, Settings } from 'react-slick'
 
 type Props = Omit<Settings, 'children'> & {
   children?: (isSwipe: boolean) => React.ReactNode
 }
 
-export const Slider = (props: Props) => {
+const SlickArrowFix = ({
+  children,
+  slideCount,
+  currentSlide,
+  ...props
+}: CustomArrowProps & { children: React.ReactNode }) =>
+  React.cloneElement(children as React.ReactElement, {
+    ...props,
+    'attr-slidecount': slideCount,
+    'attr-currentslide': currentSlide
+  })
+
+export const Slider = ({ children, ...props }: Props) => {
   const [isSwipe, setIsSwipe] = useState(false)
 
   return (
@@ -19,10 +31,18 @@ export const Slider = (props: Props) => {
       autoplaySpeed={5000}
       onSwipe={() => setIsSwipe(true)}
       afterChange={() => setIsSwipe(false)}
-      nextArrow={<IoIosArrowDroprightCircle />}
-      prevArrow={<IoIosArrowDropleftCircle />}
+      nextArrow={
+        <SlickArrowFix>
+          <IoIosArrowDroprightCircle />
+        </SlickArrowFix>
+      }
+      prevArrow={
+        <SlickArrowFix>
+          <IoIosArrowDropleftCircle />
+        </SlickArrowFix>
+      }
     >
-      {props.children?.(isSwipe)}
+      {children?.(isSwipe)}
     </Slick>
   )
 }

@@ -13,12 +13,8 @@ import {
 } from '@/pages/movie-details/hooks'
 import { TrailerModal } from '@/pages/shared/trailer-modal'
 import { getFulImageSrc, youtubeThumbnail } from '@/utils'
-import { useState } from 'react'
-import {
-  Navigate,
-  useNavigate,
-  useParams
-} from 'react-router-dom'
+import { useLayoutEffect, useState } from 'react'
+import { Navigate, useNavigate, useParams } from 'react-router-dom'
 
 export default function MovieDetailPage() {
   const { id } = useParams()
@@ -30,14 +26,10 @@ export default function MovieDetailPage() {
     isFetched: movieFetched
   } = useGetInTheaters(idInt)
 
-  const { data: casts, isError: castsError } =
-    useGetCasts(idInt)
-  const { data: trailers, isError: trailersError } =
-    useGetTrailers(idInt)
-  const {
-    data: recommendations,
-    isError: recommendationsError
-  } = useGetRecommendations(idInt)
+  const { data: casts, isError: castsError } = useGetCasts(idInt)
+  const { data: trailers, isError: trailersError } = useGetTrailers(idInt)
+  const { data: recommendations, isError: recommendationsError } =
+    useGetRecommendations(idInt)
 
   const navigate = useNavigate()
 
@@ -46,6 +38,17 @@ export default function MovieDetailPage() {
   const playTrailer = async (key: string) => {
     setTrailerSrc(YOUTUBE_TRAILER.replace('{key}', key))
   }
+
+  useLayoutEffect(() => {
+    const body = document.getElementsByName('body')[0]
+    // body.addEventListener('scroll', () => {
+
+    // })
+
+    ;() => {
+      console.log('scroll')
+    }
+  }, [id])
 
   if (movieLoading || movie == undefined) {
     return <FullAppLoading></FullAppLoading>
@@ -62,15 +65,18 @@ export default function MovieDetailPage() {
         src={trailerSrc}
       ></TrailerModal>
       <DefaultLayout>
-        <div className='h-[450px] left-0 right-0 top-0 relative'>
+        <div className='h-[550px] left-0 right-0 top-0 relative'>
           <div className='overlay-card-cover'></div>
-          <Image
-            src={getFulImageSrc(
-              movie.backdrop_path,
-              'original'
-            )}
-            className='rounded-0 rounded-none'
-          ></Image>
+          {/* <Image
+            src={getFulImageSrc(movie.backdrop_path, 'original')}
+            className='rounded-0 rounded-none object-top'
+          ></Image> */}
+
+          <img
+            src={getFulImageSrc(movie.backdrop_path, 'original')}
+            className='min-h-[200px] rounded-0 rounded-none w-full h-full object-cover object-top'
+            alt={movie.title ?? ''}
+          ></img>
         </div>
 
         <Section className='-mt-[150px] flex items-center relative z-10 mobile:block'>
@@ -79,9 +85,7 @@ export default function MovieDetailPage() {
             className='w-[200px] min-w-[200px] h-[300px] mobile:mx-auto'
           />
           <div className='px-3 flex flex-col items-start gap-3'>
-            <p className='text-xl line-clamp-1'>
-              {movie.title}
-            </p>
+            <p className='text-xl line-clamp-1'>{movie.title}</p>
             <ul className='flex items-center gap-3'>
               {movie.genres.map((genre) => (
                 <li
@@ -92,9 +96,7 @@ export default function MovieDetailPage() {
                 </li>
               ))}
             </ul>
-            <p className='line-clamp-3 opacity-[0.9]'>
-              {movie.overview}
-            </p>
+            <p className='line-clamp-3 opacity-[0.9]'>{movie.overview}</p>
           </div>
         </Section>
 
@@ -103,7 +105,7 @@ export default function MovieDetailPage() {
           hidden={castsError || casts?.length === 0}
         >
           <div className='overflow-x-scroll scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar-thin scrollbar-thumb-primary scrollbar-track-header'>
-            <div className='flex items-center gap-3'>
+            <div className='flex items-top gap-3'>
               {casts?.map((cast) => (
                 <div
                   className='flex-shrink-0 w-[200px] mb-6'
@@ -111,17 +113,11 @@ export default function MovieDetailPage() {
                 >
                   <Card
                     withPlay={false}
-                    imageSrc={getFulImageSrc(
-                      cast.profile_path,
-                      'w500'
-                    )}
+                    imageSrc={getFulImageSrc(cast.profile_path, 'w500')}
+                    imageAlt={cast.name}
                   >
-                    <p className='font-semibold'>
-                      {cast.name}
-                    </p>
-                    <p className='opacity-[0.9] text-sm'>
-                      {cast.character}
-                    </p>
+                    <p className='font-semibold'>{cast.name}</p>
+                    <p className='opacity-[0.9] text-sm'>{cast.character}</p>
                   </Card>
                 </div>
               ))}
@@ -134,11 +130,12 @@ export default function MovieDetailPage() {
           hidden={trailersError || trailers?.length === 0}
         >
           <div className='overflow-x-scroll scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar-thin scrollbar-thumb-primary scrollbar-track-header'>
-            <div className='flex items-center gap-3 h-[300px]'>
+            <div className='flex items-top gap-3 h-[300px]'>
               {trailers?.map((trailer) => (
                 <Card
                   onClick={() => playTrailer(trailer.key)}
                   imageSrc={youtubeThumbnail(trailer.key)}
+                  imageAlt={trailer.site}
                   className='flex-shrink-0 w-[250px]'
                   key={trailer.id}
                 ></Card>
@@ -149,24 +146,16 @@ export default function MovieDetailPage() {
 
         <Section
           title='Recommendations'
-          hidden={
-            recommendationsError ||
-            recommendations?.length === 0
-          }
+          hidden={recommendationsError || recommendations?.length === 0}
         >
           <MovieSlider>
             {() =>
               recommendations?.map((movie) => (
                 <Card
                   withPlay={false}
-                  onClick={() =>
-                    navigate(`/details/${movie.id}`)
-                  }
+                  onClick={() => navigate(`/details/${movie.id}`)}
                   title={movie.title}
-                  imageSrc={getFulImageSrc(
-                    movie.poster_path,
-                    'w500'
-                  )}
+                  imageSrc={getFulImageSrc(movie.poster_path, 'w500')}
                   key={movie.id}
                 ></Card>
               ))

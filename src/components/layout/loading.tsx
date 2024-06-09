@@ -8,7 +8,10 @@ type Props = IconBaseProps & {
 
 export const Loading = ({ className, ...props }: Props) => {
   return (
-    <div className='justify-center flex items-center gap-3'>
+    <div
+      role='loader'
+      className='justify-center flex items-center gap-3'
+    >
       <AiOutlineLoading3Quarters
         size={64}
         className={cn('animate-spin text-primary', className)}
