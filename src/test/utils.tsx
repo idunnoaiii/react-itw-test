@@ -1,6 +1,11 @@
-import App from '@/App'
+import FullAppLoading from '@/components/layout/full-app-loading'
+import { AppDataProvider } from '@/hooks/app-context'
+import RootErrorPage from '@/pages/error/root-error-page'
+import logError from '@/services/logger'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { cleanup, render } from '@testing-library/react'
+import { Suspense } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 import { BrowserRouter } from 'react-router-dom'
 import { afterEach } from 'vitest'
 
@@ -19,9 +24,21 @@ const queryClient = new QueryClient({
 function customRender(ui: React.ReactElement, options = {}) {
   return render(ui, {
     wrapper: ({ children }) => (
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>{children}</BrowserRouter>
-      </QueryClientProvider>
+      <ErrorBoundary
+        FallbackComponent={RootErrorPage}
+        onReset={() => {
+          location.href = '/'
+        }}
+        onError={logError}
+      >
+        <QueryClientProvider client={queryClient}>
+          <AppDataProvider>
+            <Suspense fallback={<FullAppLoading></FullAppLoading>}>
+              <BrowserRouter>{children}</BrowserRouter>
+            </Suspense>
+          </AppDataProvider>
+        </QueryClientProvider>
+      </ErrorBoundary>
     ),
     ...options
   })
@@ -29,4 +46,4 @@ function customRender(ui: React.ReactElement, options = {}) {
 
 export * from '@testing-library/react'
 export { default as userEvent } from '@testing-library/user-event'
-export { customRender as render }
+export { customRender as renderWithWrapper }

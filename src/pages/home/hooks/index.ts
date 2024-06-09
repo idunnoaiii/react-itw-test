@@ -1,6 +1,6 @@
 import {
   getInTheaterMovies,
-  getPopulars,
+  getPopularMovies,
   getTrailers,
   getTrendingMoviess
 } from '@/services/movie.api'
@@ -16,7 +16,7 @@ export const useGetTrendings = () => {
 export const useGetPopulars = () => {
   return useQuery({
     queryKey: ['populars'],
-    queryFn: () => getPopulars()
+    queryFn: () => getPopularMovies()
   })
 }
 

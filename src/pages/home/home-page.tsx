@@ -40,6 +40,8 @@ export default function HomePage() {
     return <FullAppLoading></FullAppLoading>
   }
 
+  throw new Error('Not Found')
+
   return (
     <>
       <DefaultLayout>

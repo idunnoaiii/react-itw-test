@@ -1,7 +1,10 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
 
 const axiosParams = {
-  baseURL: import.meta.env.VITE_API_URL
+  baseURL: import.meta.env.VITE_API_URL,
+  headers: {
+    'Content-Type': 'application/json'
+  }
 }
 
 const axiosInstance = axios.create(axiosParams)

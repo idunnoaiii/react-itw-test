@@ -1,19 +1,24 @@
 import api from '@/services/api'
-import { Cast, Movie, Genre, Trailer, MovieDetails } from '@/types/movie'
+import {
+  BaseApiError as BaseApiError,
+  GetCastsResponse,
+  GetGenresResponse
+} from '@/services/movie.type'
 import { BaseListResponse, BasePagedResponse } from '@/types/base'
-import { GetCastsResponse, GetGenresResponse } from '@/services/movie.type'
+import { Cast, Genre, Movie, MovieDetails, Trailer } from '@/types/movie'
 
-export const getTrendingMoviess = (): Promise<Movie[]> =>
-  api
+export const getTrendingMoviess = (): Promise<Movie[]> => {
+  return api
     .get<BasePagedResponse<Movie>>('/trending/movie/week')
     .then((res) => res.data.results)
+}
 
 export const getInTheaterMovies = (): Promise<Movie[]> =>
   api
     .get<BasePagedResponse<Movie>>('/movie/now_playing')
     .then((res) => res.data.results)
 
-export const getPopulars = (page = 1): Promise<Movie[]> =>
+export const getPopularMovies = (page = 1): Promise<Movie[]> =>
   api
     .get<BasePagedResponse<Movie>>(`/movie/popular`, {
       params: {
@@ -27,8 +32,15 @@ export const getGenres = (): Promise<Genre[]> =>
 
 export const getMovieDetail = async (
   id: number
-): Promise<null | MovieDetails> =>
-  api.get<null | MovieDetails>(`/movie/${id}`).then((res) => res.data)
+): Promise<BaseApiError | MovieDetails | null> => {
+  try {
+    const apiRes = await api.get<MovieDetails>(`/movie/${id}`)
+    return apiRes.data
+  } catch (error) {
+    console.log(error)
+    return null
+  }
+}
 
 export const getCasts = async (id: number): Promise<Cast[]> =>
   api.get<GetCastsResponse>(`/movie/${id}/credits`).then((res) => res.data.cast)

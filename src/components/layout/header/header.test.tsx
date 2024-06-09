@@ -1,16 +1,32 @@
-import { render, screen } from '@/test/utils'
+import { renderWithWrapper, screen, waitFor } from '@/test/utils'
 
 import Header from './header'
 
-describe('Header', () => {
-  it('should render', async () => {
-    render(<Header />)
-    const element = screen.getByRole('brand')
-    expect(element).toBeInTheDocument()
-  })
+describe(
+  'Header',
+  {
+    concurrent: true
+  },
+  () => {
+    it('should render', async () => {
+      renderWithWrapper(<Header />)
+      await waitFor(
+        () => {
+          const element = screen.getByRole('brand')
+          expect(element).toBeInTheDocument()
+        },
+        { timeout: 5000 }
+      )
+    })
 
-  it('should render with text', async () => {
-    render(<Header />)
-    expect(screen.getByText('TheMovie')).toBeInTheDocument()
-  })
-})
+    it('should render with text', async () => {
+      renderWithWrapper(<Header />)
+      await waitFor(
+        () => {
+          expect(screen.getByText('TheMovie')).toBeInTheDocument()
+        },
+        { timeout: 5000 }
+      )
+    })
+  }
+)

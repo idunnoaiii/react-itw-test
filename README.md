@@ -18,35 +18,22 @@ TheMovie is a movie streaming app that allows users to browse and watch movies.
 - The app uses Axios for making API requests. The API is provided by themoviedb.org.
 - The app configures ESLint and Prettier for code linting and formatting.
 
-
 ## Project Structure
 
 The project is structured as follows:
 
 ```
-src/
-  components/
-    card.tsx
-    image.tsx
-    layout/
-      default-layout.tsx
-      full-app-loading.tsx
-    movie-slider.tsx
-    section.tsx
-  constants.ts
-  pages/
-    home/
-      components/
-        movie-slider.tsx
-      hooks.ts
-      index.tsx
-    movie-details/
-      components/
-        trailer-modal.tsx
-      hooks.ts
-      index.tsx
-  utils.ts
+- `src/`: The source code of the project.
+  - `components/`: The reusable components used throughout the app.
+  - `constants.ts`: Global constants used throughout the app.
+  - `pages/`: The pages of the app, including the home page, movie details page, and movie slider page.
+  - `utils.ts`: Utility functions used throughout the app.
+- `public/`: The public assets of the project, such as images and fonts.
+- `package.json`: The package configuration file for the project.
+- `tsconfig.json`: The TypeScript configuration file for the project.
+- `vite.config.ts`: The configuration file for the Vite build process.
 ```
+
 - This structure follow the feature-based approach, where each feature is a separate folder with its own components, hooks, and index files.
 - The advantage of this structure:
   - It allows for easy navigation and organization of the codebase.
@@ -74,5 +61,6 @@ The project has the following dependencies:
 - Prettier
 
 ## Project Setup and Running
+
 - run `npm install` to install the dependencies.
 - run `npm run dev` to start the development server.

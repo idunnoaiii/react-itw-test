@@ -1,28 +1,26 @@
-import Router from '@/router'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { Suspense } from 'react'
-import { RouterProvider } from 'react-router-dom'
-import FullAppLoading from './components/layout/full-app-loading/full-app-loading'
-import { AppDataProvider } from './hooks/app-context'
+import { lazy } from 'react'
+import { Route, Routes } from 'react-router-dom'
+import NotFoundPage from './pages/error/not-found-page'
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      throwOnError: true,
-      refetchOnReconnect: false
-    }
-  }
-})
+const HomePage = lazy(() => import('@/pages/home/home-page'))
+const MovieDetailPage = lazy(() => import('@/pages/movie-details/detail-page'))
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <AppDataProvider>
-        <Suspense fallback={<FullAppLoading></FullAppLoading>}>
-          <RouterProvider router={Router}></RouterProvider>
-        </Suspense>
-      </AppDataProvider>
-    </QueryClientProvider>
+    <Routes>
+      <Route
+        path='/'
+        element={<HomePage />}
+      />
+      <Route
+        path='/details/:id'
+        element={<MovieDetailPage />}
+      />
+      <Route
+        path='/*'
+        element={<NotFoundPage></NotFoundPage>}
+      />
+    </Routes>
   )
 }
 

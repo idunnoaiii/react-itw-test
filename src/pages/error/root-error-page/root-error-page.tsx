@@ -1,8 +1,12 @@
 import Container from '@/components/container'
+import { FallbackProps } from 'react-error-boundary'
 
-const RootErrorPage = () => {
+const RootErrorPage = ({ resetErrorBoundary }: FallbackProps) => {
   return (
-    <Container className='flex flex-col items-center justify-center'>
+    <Container
+      role='alert'
+      className='flex flex-col items-center justify-center'
+    >
       <section>
         <div className='py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6'>
           <div className='mx-auto max-w-screen-sm text-center'>
@@ -13,8 +17,10 @@ const RootErrorPage = () => {
               Try refreshing the page.
             </p>
             <a
-              href='/'
+              href='#'
+              onClick={() => resetErrorBoundary?.()}
               className='inline-flex 
+              my-3
               text-white 
               bg-primary focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center'
             >

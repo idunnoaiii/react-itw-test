@@ -7,3 +7,9 @@ export type GetCastsResponse = {
 export type GetGenresResponse = {
   genres: Genre[]
 }
+
+export type BaseApiError = {
+  success: number
+  status_code: string
+  status_message: string
+}
