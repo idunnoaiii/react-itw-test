@@ -1,6 +1,8 @@
-import { RouterProvider } from 'react-router-dom'
 import Router from '@/router'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { Suspense } from 'react'
+import { RouterProvider } from 'react-router-dom'
+import FullAppLoading from './components/layout/full-app-loading/full-app-loading'
 import { AppDataProvider } from './hooks/app-context'
 
 const queryClient = new QueryClient({
@@ -16,7 +18,9 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <AppDataProvider>
-        <RouterProvider router={Router}></RouterProvider>
+        <Suspense fallback={<FullAppLoading></FullAppLoading>}>
+          <RouterProvider router={Router}></RouterProvider>
+        </Suspense>
       </AppDataProvider>
     </QueryClientProvider>
   )

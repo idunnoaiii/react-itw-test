@@ -1,22 +1,22 @@
-import { Slider } from '@/components/slider/slider'
-import Trending from './components/trending'
+import { getTrailers } from '@/services/movie.api'
 import Card from '@/components/card'
-import { useNavigate } from 'react-router-dom'
+import DefaultLayout from '@/components/layout/default-layout'
+import FullAppLoading from '@/components/layout/full-app-loading/full-app-loading'
+import Section from '@/components/section'
+import { Slider } from '@/components/slider/slider'
+import { YOUTUBE_TRAILER } from '@/constants'
 import MovieSlider from '@/pages/home/components/movie-slider'
 import {
   useGetInTheaters,
   useGetPopulars,
   useGetTrendings
 } from '@/pages/home/hooks'
-import { Movie } from '@/types/movie'
-import { useState } from 'react'
-import { getFulImageSrc } from '@/utils'
-import { getTrailers } from '@/api/movie.api'
 import { TrailerModal } from '@/pages/shared/trailer-modal'
-import { YOUTUBE_TRAILER } from '@/constants'
-import FullAppLoading from '@/components/layout/full-app-loading'
-import DefaultLayout from '@/components/layout/default-layout'
-import Section from '@/components/section'
+import { Movie } from '@/types/movie'
+import { getFulImageSrc } from '@/utils'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import Trending from './components/trending'
 
 export default function HomePage() {
   const navigate = useNavigate()

@@ -5,8 +5,7 @@ import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 type Props = IconBaseProps & {
   className?: string
 }
-
-export const Loading = ({ className, ...props }: Props) => {
+const Loading = ({ className, ...props }: Props) => {
   return (
     <div
       role='loader'
@@ -20,3 +19,5 @@ export const Loading = ({ className, ...props }: Props) => {
     </div>
   )
 }
+
+export default Loading

@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 
-import { Loading } from './loading'
+import Loading from './loading'
 
 describe('Loading', () => {
   it('should render', async () => {

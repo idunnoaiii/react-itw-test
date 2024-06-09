@@ -1,7 +1,7 @@
-import api from '@/api/api'
+import api from '@/services/api'
 import { Cast, Movie, Genre, Trailer, MovieDetails } from '@/types/movie'
 import { BaseListResponse, BasePagedResponse } from '@/types/base'
-import { GetCastsResponse, GetGenresResponse } from '@/api/movie.type'
+import { GetCastsResponse, GetGenresResponse } from '@/services/movie.type'
 
 export const getTrendingMoviess = (): Promise<Movie[]> =>
   api

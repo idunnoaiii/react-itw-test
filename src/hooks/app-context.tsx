@@ -1,7 +1,7 @@
+import { getGenres } from '@/services/movie.api'
+import FullAppLoading from '@/components/layout/full-app-loading/full-app-loading'
 import { Genre } from '@/types/movie'
 import { createContext, useContext, useEffect, useState } from 'react'
-import { getGenres } from '@/api/movie.api'
-import FullAppLoading from '@/components/layout/full-app-loading'
 
 export type AppContextType = {
   genres: Genre[]

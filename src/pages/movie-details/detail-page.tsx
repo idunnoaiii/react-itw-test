@@ -1,7 +1,7 @@
 import Card from '@/components/card'
 import Image from '@/components/image'
 import DefaultLayout from '@/components/layout/default-layout'
-import FullAppLoading from '@/components/layout/full-app-loading'
+import FullAppLoading from '@/components/layout/full-app-loading/full-app-loading'
 import Section from '@/components/section'
 import { YOUTUBE_TRAILER } from '@/constants'
 import MovieSlider from '@/pages/home/components/movie-slider'

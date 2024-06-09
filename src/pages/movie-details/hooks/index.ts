@@ -3,7 +3,7 @@ import {
   getMovieDetail,
   getRecommendations,
   getTrailers
-} from '@/api/movie.api'
+} from '@/services/movie.api'
 import { useQuery } from '@tanstack/react-query'
 
 export const useGetInTheaters = (id: number) => {
