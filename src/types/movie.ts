@@ -4,20 +4,19 @@ export type Movie = {
   adult: boolean
   backdrop_path: string
   genre_ids: number[]
-  origin_country: string[]
+  origin_country?: string[]
   original_language: string
-  original_name: string
+  original_name?: string
   overview: string
   popularity: number
   poster_path: string
-  first_air_date: string
-  name: string
+  first_air_date?: string
+  name?: string
   vote_average: number
   vote_count: number
-  seasons: Season[]
 }
 
-export type MovieDetails = Movie & {
+export type MovieDetails = Omit<Movie, 'genre_ids'> & {
   budget: number
   genres: Genre[]
   homepage: string
@@ -32,24 +31,16 @@ export type MovieDetails = Movie & {
 }
 
 export type Cast = {
-  profile_path: string
+  profile_path: string | null
   id: number
   name: string
   character: string
 }
 
 export type Trailer = {
-  id: number
+  id: string
   site: string
   key: string
-}
-
-export type Season = {
-  name: string | undefined
-  seasonNumber: number
-  id: number
-  posterPath: string
-  episodeCount: number
 }
 
 export type Genre = {

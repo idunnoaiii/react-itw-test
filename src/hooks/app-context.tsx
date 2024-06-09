@@ -1,5 +1,5 @@
-import { getGenres } from '@/services/movie.api'
 import FullAppLoading from '@/components/layout/full-app-loading/full-app-loading'
+import { getGenres } from '@/services/movie/movie-api'
 import { Genre } from '@/types/movie'
 import { createContext, useContext, useEffect, useState } from 'react'
 

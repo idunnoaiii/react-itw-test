@@ -1,4 +1,3 @@
-import { getTrailers } from '@/services/movie.api'
 import Card from '@/components/card'
 import DefaultLayout from '@/components/layout/default-layout'
 import FullAppLoading from '@/components/layout/full-app-loading/full-app-loading'
@@ -12,6 +11,7 @@ import {
   useGetTrendings
 } from '@/pages/home/hooks'
 import { TrailerModal } from '@/pages/shared/trailer-modal'
+import { getTrailers } from '@/services/movie/movie-api'
 import { Movie } from '@/types/movie'
 import { getFulImageSrc } from '@/utils'
 import { useState } from 'react'
@@ -39,8 +39,6 @@ export default function HomePage() {
   if (trendingsLoading || inTheatersLoading || popularsLoading) {
     return <FullAppLoading></FullAppLoading>
   }
-
-  throw new Error('Not Found')
 
   return (
     <>
