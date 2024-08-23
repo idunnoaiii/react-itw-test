@@ -33,7 +33,7 @@ function customRender(ui: React.ReactElement, options = {}) {
       >
         <QueryClientProvider client={queryClient}>
           <AppDataProvider>
-            <Suspense fallback={<FullAppLoading></FullAppLoading>}>
+            <Suspense fallback={<FullAppLoading/>}>
               <BrowserRouter>{children}</BrowserRouter>
             </Suspense>
           </AppDataProvider>
