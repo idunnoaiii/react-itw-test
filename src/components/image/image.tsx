@@ -15,6 +15,7 @@ export const Image = (props: Props) => {
         src={props.src}
         className='min-h-[200px] w-full h-full object-cover'
         alt={props.alt ?? ''}
+        {...props}
       ></img>
     </div>
   )
